@@ -1,0 +1,46 @@
+.contact-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-list-container {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+
+  .contact-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      color: darkred;
+      font-size: 2rem;
+      font-weight: 300;
+    }
+
+    .contact-list-sorting {
+      button {
+        margin: 0 5px;
+        background: none;
+        border: 1px solid darkred;
+        color: darkred;
+      }
+    }
+  }
+
+  .contact-list-content {
+    display: flex;
+    .contact-list {
+      flex: 1;
+      .contact-details {
+        border-bottom: 1px solid darkred;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
