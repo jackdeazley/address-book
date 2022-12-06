@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { SearchContactsComponent } from './search-contacts.component';
 
@@ -9,6 +10,7 @@ describe('SearchContactsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SearchContactsComponent],
+      imports: [FormsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchContactsComponent);
