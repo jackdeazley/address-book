@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Avengers;
+  src: url('/assets/font/AvengeRegular-8MKVZ.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+}
