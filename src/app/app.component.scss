@@ -20,10 +20,12 @@ header {
 
 .content-container {
   display: flex;
-  margin: 30px;
+  margin: 0 auto;
+  padding: 30px;
+  width: 80%;
 
   .contacts-list {
-    flex: 3;
+    flex: 4;
   }
   .selected-contact {
     flex: 6;
