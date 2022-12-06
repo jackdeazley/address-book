@@ -1,0 +1,25 @@
+<div class="contact-list-container">
+  <div *ngIf="contacts.length > 0; else noContacts">
+    <div class="contact-list-header">
+      <h2>Contacts</h2>
+      <div class="contact-list-sorting">
+        <button (click)="sortContactList(sortingKeys.FIRST_NAME)"
+          >Sort by first name</button
+        >
+        <button (click)="sortContactList(sortingKeys.LAST_NAME)"
+          >Sort by last name</button
+        >
+      </div>
+    </div>
+    <div class="contact-list-content">
+      <div class="contact-list">
+        <div class="contact-details" *ngFor="let contact of contacts">
+          <div class="contact-name">
+            <span>{{ contact.firstName }} {{ contact.lastName }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noContacts>No Heroes</ng-template>
+</div>
