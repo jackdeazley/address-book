@@ -1,10 +1,11 @@
+@import '../../../assets/variables';
 .selected-contact-container {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   margin-left: 30px;
   padding: 20px;
-  border: 1px solid darkred;
+  border: 1px solid $primary-color;
   height: 300px;
   align-items: center;
   justify-content: center;
@@ -15,7 +16,7 @@
   }
 
   h2 {
-    color: darkred;
+    color: $primary-color;
     font-size: 2rem;
     font-weight: 300;
   }
@@ -32,7 +33,7 @@
     }
 
     .contact-icon {
-      background: darkred;
+      background: $primary-color;
       height: 50px;
       width: 50px;
       display: flex;
@@ -47,7 +48,7 @@
   .secondary-info {
     font-size: 1.2rem;
     .info-icon {
-      color: darkred;
+      color: $primary-color;
       margin-right: 5px;
     }
   }

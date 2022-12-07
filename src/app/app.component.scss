@@ -1,9 +1,11 @@
+@import '../assets/variables';
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
-  background: darkred;
+  height: 80px;
+  background: $primary-color;
   color: white;
 
   h1 {

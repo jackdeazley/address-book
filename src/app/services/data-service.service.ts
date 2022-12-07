@@ -53,7 +53,7 @@ export const MOCK_DATA = [
     firstName: 'Peter',
     lastName: 'Parker',
     phoneNumber: 37452691,
-    email: 'friendly-neighbourhood-spider@starkindustries.com',
+    email: 'friendly-neighbourhood-spiderman@starkindustries.com',
   },
   {
     id: '7',
