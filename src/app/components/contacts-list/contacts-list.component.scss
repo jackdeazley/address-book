@@ -31,6 +31,8 @@
 
   .contact-list-content {
     display: flex;
+    overflow-y: scroll;
+    max-height: 250px;
     .contact-list {
       flex: 1;
       .contact-details {

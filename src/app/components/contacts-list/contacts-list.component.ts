@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { SortingType } from 'src/app/app.component';
 import { Contact } from 'src/app/models/contact.model';
 
@@ -9,6 +16,8 @@ import { Contact } from 'src/app/models/contact.model';
 })
 export class ContactsListComponent {
   @Input() contacts: Contact[] = [];
+
+  @Output() selectContact: EventEmitter<Contact> = new EventEmitter<Contact>();
 
   public contactDetails: string = 'contact-details';
 
@@ -43,5 +52,9 @@ export class ContactsListComponent {
     });
 
     return sortedArray;
+  }
+
+  public onSelectedContact(contact: Contact): void {
+    this.selectContact.emit(contact);
   }
 }

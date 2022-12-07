@@ -13,6 +13,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchContactsModule } from './components/search-contacts/search-contacts.module';
 import { ContactsListModule } from './components/contacts-list/contacts-list.module';
+import { SelectedContactModule } from './components/selected-contact/selected-contact.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { ContactsListModule } from './components/contacts-list/contacts-list.mod
     FontAwesomeModule,
     SearchContactsModule,
     ContactsListModule,
+    SelectedContactModule,
   ],
   providers: [ContactService],
   bootstrap: [AppComponent],

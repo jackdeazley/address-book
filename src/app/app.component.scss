@@ -24,6 +24,10 @@ header {
   padding: 30px;
   width: 80%;
 
+  @media screen and (max-width: 920px) {
+    flex-direction: column;
+  }
+
   .contacts-list {
     flex: 4;
   }

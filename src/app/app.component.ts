@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
+import { SelectedContactComponent } from './components/selected-contact/selected-contact.component';
 import { Contact } from './models/contact.model';
 import { ContactService } from './services/contacts.service';
 
@@ -11,11 +12,13 @@ import { ContactService } from './services/contacts.service';
 })
 export class AppComponent implements OnInit {
   @ViewChild('contactList') contactList: ContactsListComponent;
+  @ViewChild('selectedContactComponent')
+  selectedContactComponent: SelectedContactComponent;
 
   public contacts: Contact[] = [];
 
   public isCollapsed = true;
-  public faCoffee = faSearch;
+  public searchIcon = faSearch;
 
   constructor(public contactService: ContactService) {}
 
@@ -36,6 +39,14 @@ export class AppComponent implements OnInit {
         this.contacts = contacts;
       });
     }
+  }
+
+  public setSelectedContact(contact: Contact): void {
+    if (!contact.contactImageUrl) {
+      this.selectedContactComponent.createContactIcon(contact);
+    }
+
+    this.selectedContactComponent.selectedContact = contact;
   }
 }
 
