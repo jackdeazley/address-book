@@ -21,7 +21,7 @@ import { ContactFormModalModule } from './components/contact-form-modal/contact-
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    InMemoryWebApiModule.forRoot(DataService),
+    InMemoryWebApiModule.forRoot(DataService, { put204: false }),
     HttpClientModule,
     BrowserAnimationsModule,
     CollapseModule,

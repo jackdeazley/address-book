@@ -11,7 +11,28 @@
     </button>
   </div>
   <div class="modal-body">
-    This is static modal, backdrop click will not close it. Click
-    <b>&times;</b> to close modal.
+    <form class="contact-form" [formGroup]="contactForm">
+      <div class="form-control">
+        <label for="firstName">First Name</label>
+        <input type="text" formControlName="firstName" />
+      </div>
+
+      <div class="form-control">
+        <label for="lastName">Last Name</label>
+        <input type="text" formControlName="lastName" />
+      </div>
+
+      <div class="form-control">
+        <label for="phoneNumber">phone</label>
+        <input type="text" formControlName="phoneNumber" />
+      </div>
+
+      <div class="form-control">
+        <label for="email">email</label>
+        <input type="text" formControlName="email" />
+      </div>
+
+      <button type="submit" (click)="onSubmitForm()">Submit</button>
+    </form>
   </div>
 </div>

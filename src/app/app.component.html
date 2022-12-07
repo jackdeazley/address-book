@@ -37,6 +37,7 @@
   <div class="selected-contact">
     <app-selected-contact
       #selectedContactComponent
+      [hidden]="!isSelectedContactVisible"
       (openModal)="openContactFormModal(formModal, $event)"
     ></app-selected-contact>
   </div>
@@ -46,5 +47,6 @@
   <app-contact-form-modal
     #formModalComponent
     [contactToEdit]="contactToEdit"
+    (submittedForm)="getHeroes()"
   ></app-contact-form-modal>
 </ng-template>

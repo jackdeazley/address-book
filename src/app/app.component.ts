@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
   public contacts: Contact[] = [];
   public contactToEdit?: Contact;
 
-  public isCollapsed = true;
+  public isCollapsed: boolean = true;
+  public isSelectedContactVisible: boolean = false;
+
   public searchIcon = faSearch;
   public addIcon = faAdd;
 
@@ -51,6 +53,7 @@ export class AppComponent implements OnInit {
         .pipe(delay(500))
         .subscribe((contacts) => {
           this.contacts = contacts;
+          this.isSelectedContactVisible = false;
         });
     }
   }
@@ -61,6 +64,7 @@ export class AppComponent implements OnInit {
     }
 
     this.selectedContactComponent.selectedContact = contact;
+    this.isSelectedContactVisible = true;
   }
 
   public openContactFormModal(

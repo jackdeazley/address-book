@@ -16,8 +16,8 @@ export class SelectedContactComponent {
   public emailIcon = faEnvelope;
 
   public createContactIcon(contact: Contact): void {
-    const firstInitial = contact.firstName.charAt(0);
-    const secondInitial = contact.lastName.charAt(0);
+    const firstInitial = contact.firstName.charAt(0).toUpperCase();
+    const secondInitial = contact.lastName.charAt(0).toUpperCase();
 
     this.contactInitials = `${firstInitial}${secondInitial}`;
   }

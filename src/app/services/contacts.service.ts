@@ -19,7 +19,7 @@ export class ContactService {
   }
 
   public createContact(contact: Contact) {
-    return this.http.post(`${API_URL + 'contacts'}`, contact);
+    return this.http.post(`${API_URL} /contacts`, contact);
   }
 
   public deleteContact(contactId: string) {

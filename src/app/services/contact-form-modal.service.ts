@@ -1,4 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ContactFormModalComponent } from '../components/contact-form-modal/contact-form-modal.component';
 
@@ -19,5 +20,15 @@ export class ContactFormModalService {
 
   public hideModal(): void {
     this.bsModalService.hide();
+  }
+
+  public buildContactForm(): FormGroup {
+    return new FormGroup({
+      id: new FormControl(''),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      phoneNumber: new FormControl(null),
+      email: new FormControl('', Validators.email),
+    });
   }
 }
