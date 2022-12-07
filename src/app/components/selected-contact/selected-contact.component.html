@@ -1,0 +1,25 @@
+<div class="selected-contact-container" *ngIf="selectedContact">
+  <h2>Contact Information</h2>
+  <div class="main-info">
+    <img
+      *ngIf="selectedContact.contactImageUrl; else contactIcon"
+      src="{{ selectedContact.contactImageUrl }}"
+      alt="Contact Image"
+    />
+    <ng-template #contactIcon>
+      <div class="contact-icon">
+        <span>{{ contactInitials }}</span>
+      </div>
+    </ng-template>
+    <span class="contact-name">
+      {{ selectedContact.firstName }} {{ selectedContact.lastName }}</span
+    >
+  </div>
+  <div class="secondary-info">
+    <fa-icon class="info-icon" [icon]="phoneIcon"></fa-icon>
+
+    <span class="contact-phone">{{
+      selectedContact.phoneNumber ? selectedContact.phoneNumber : 'N/A'
+    }}</span>
+  </div>
+</div>
