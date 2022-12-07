@@ -116,4 +116,21 @@ describe('ContactsListComponent', () => {
     // assert
     expect(result).toEqual(sortedContacts);
   });
+
+  it('CLC003 - will emit the selectedContact', () => {
+    // arrange
+    const spyOnEmit = spyOn(component.selectContact, 'emit');
+
+    const contact: Contact = {
+      id: '1',
+      firstName: 'Jack',
+      lastName: 'Deazley',
+    };
+
+    // act
+    component.onSelectedContact(contact);
+
+    // assert
+    expect(spyOnEmit).toHaveBeenCalledWith(contact);
+  });
 });
