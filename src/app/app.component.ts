@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
 
   public contacts: Contact[] = [];
   public contactToEdit?: Contact;
+  public isLoading: boolean = true;
 
   public isCollapsed: boolean = true;
   public isSelectedContactVisible: boolean = false;
@@ -60,6 +61,7 @@ export class AppComponent implements OnInit {
   }
 
   public getHeroes(heroName?: string): void {
+    this.isLoading = true;
     if (heroName) {
       const filteredArray = this.contacts.filter(
         (contact) =>
@@ -73,6 +75,7 @@ export class AppComponent implements OnInit {
         .pipe(delay(500))
         .subscribe((contacts) => {
           this.contacts = contacts;
+          this.isLoading = false;
           localStorage.setItem('contacts', JSON.stringify(contacts));
           this.isSelectedContactVisible = false;
         });

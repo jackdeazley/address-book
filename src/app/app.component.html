@@ -31,7 +31,9 @@
 
 <div class="content-container">
   <div class="contacts-list">
+    <p *ngIf="isLoading">Loading...</p>
     <app-contacts-list
+      *ngIf="!isLoading"
       #contactList
       [contacts]="contacts"
       (selectContact)="setSelectedContact($event)"
@@ -40,7 +42,7 @@
   <div class="selected-contact">
     <app-selected-contact
       #selectedContactComponent
-      [hidden]="!isSelectedContactVisible"
+      [hidden]="!isSelectedContactVisible || isLoading"
       (openModal)="openContactFormModal(formModal, $event)"
       (deleteContact)="getHeroes()"
     ></app-selected-contact>

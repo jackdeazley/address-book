@@ -68,6 +68,7 @@ describe('AppComponent', () => {
       // assert
       expect(spyOnGetContacts).toHaveBeenCalled();
       expect(component.contacts).toEqual(contacts);
+      expect(component.isLoading).toBeFalse();
     }));
 
     it('AC002 - should filter the existing array', () => {
