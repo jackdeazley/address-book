@@ -11,6 +11,10 @@ import { of } from 'rxjs';
 import { ContactFormModalService } from 'src/app/services/contact-form-modal.service';
 import { ContactService } from 'src/app/services/contacts.service';
 import { MOCK_DATA } from 'src/app/services/data-service.service';
+import {
+  ToasterAlertModel,
+  ToasterAlertType,
+} from 'src/app/services/toaster-alert.service';
 
 import { ContactFormModalComponent } from './contact-form-modal.component';
 
@@ -76,6 +80,13 @@ describe('ContactFormModalComponent', () => {
       const spyOnEmit = spyOn(component.submittedForm, 'emit');
 
       const spyOnHideModal = spyOn(component, `hideModal`);
+      const toasterAlertModal: ToasterAlertModel = {
+        showToaster: true,
+        toasterType: ToasterAlertType.SUCCESS,
+        message: `Contact added!`,
+      };
+
+      const spyOnNext = spyOn(component.toasterService.toasterAlert$, 'next');
 
       // act
       component.onSubmitForm();
@@ -84,6 +95,7 @@ describe('ContactFormModalComponent', () => {
       expect(spyOnAddContact).toHaveBeenCalled();
       expect(spyOnEmit).toHaveBeenCalled();
       expect(spyOnHideModal).toHaveBeenCalled();
+      expect(spyOnNext).toHaveBeenCalledWith(toasterAlertModal);
     });
 
     it('CFC003 - will submit a edited contact', () => {
@@ -108,6 +120,14 @@ describe('ContactFormModalComponent', () => {
 
       const spyOnHideModal = spyOn(component, `hideModal`);
 
+      const toasterAlertModal: ToasterAlertModel = {
+        showToaster: true,
+        toasterType: ToasterAlertType.SUCCESS,
+        message: `Contact updated!`,
+      };
+
+      const spyOnNext = spyOn(component.toasterService.toasterAlert$, 'next');
+
       // act
       component.onSubmitForm();
 
@@ -115,6 +135,7 @@ describe('ContactFormModalComponent', () => {
       expect(spyOnUpdateContact).toHaveBeenCalled();
       expect(spyOnEmit).toHaveBeenCalled();
       expect(spyOnHideModal).toHaveBeenCalled();
+      expect(spyOnNext).toHaveBeenCalledWith(toasterAlertModal);
     });
   });
 

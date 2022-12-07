@@ -51,6 +51,12 @@ export class ContactFormModalComponent implements OnInit {
           .subscribe(() => {
             this.submittedForm.emit();
             this.hideModal();
+            const toasterAlertModal: ToasterAlertModel = {
+              showToaster: true,
+              toasterType: ToasterAlertType.SUCCESS,
+              message: `Contact updated!`,
+            };
+            this.toasterService.toasterAlert$.next(toasterAlertModal);
           });
       } else {
         this.contactForm.patchValue({

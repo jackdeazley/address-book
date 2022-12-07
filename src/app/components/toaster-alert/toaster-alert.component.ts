@@ -11,7 +11,7 @@ import {
   templateUrl: './toaster-alert.component.html',
   styleUrls: ['./toaster-alert.component.scss'],
 })
-export class ToasterAlertComponent implements OnInit {
+export class ToasterAlertComponent {
   @Input() toasterAlertModel: ToasterAlertModel;
 
   public faSuccess = faCheck;
@@ -23,10 +23,6 @@ export class ToasterAlertComponent implements OnInit {
   public delete: ToasterAlertType.DELETE;
 
   constructor(public toasterService: ToasterAlertService) {}
-
-  ngOnInit(): void {
-    console.log(this.toasterAlertModel);
-  }
 
   public closeToasterAlert(): void {
     this.toasterService.toasterAlert$.next({ showToaster: false });

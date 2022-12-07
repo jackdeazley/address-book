@@ -51,7 +51,10 @@ export class AppComponent implements OnInit {
 
   public listenForToasterAlert(): void {
     this.toasterService.toasterAlert$.subscribe((toasterModel) => {
-      this.toasterAlertModel = toasterModel;
+      if (toasterModel.toasterType) {
+        this.toasterAlertModel = toasterModel;
+      }
+
       this.showToasterAlert = toasterModel.showToaster;
     });
   }
