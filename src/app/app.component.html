@@ -3,28 +3,56 @@
     >Avengers Assembled <span>(into an address book) </span></h1
   >
 
-  <fa-icon
-    [icon]="searchIcon"
-    class="header-icon"
-    (click)="isCollapsed = !isCollapsed"
-    [attr.aria-expanded]="!isCollapsed"
-    aria-controls="collapseBasic"
-  ></fa-icon>
-</header>
+  <div class="header-actions">
+    <fa-icon
+      [icon]="addIcon"
+      class="header-icon"
+      (click)="openContactFormModal(formModal)"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseBasic"
+    ></fa-icon>
 
+    <fa-icon
+      [icon]="searchIcon"
+      class="header-icon"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseBasic"
+    ></fa-icon>
+  </div>
+</header>
+<app-toaster-alert
+  *ngIf="showToasterAlert"
+  [toasterAlertModel]="toasterAlertModel"
+></app-toaster-alert>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
   <app-search-contacts (searchedHero)="getHeroes($event)"></app-search-contacts>
 </div>
 
 <div class="content-container">
   <div class="contacts-list">
+    <p *ngIf="isLoading">Loading...</p>
     <app-contacts-list
+      *ngIf="!isLoading"
       #contactList
       [contacts]="contacts"
       (selectContact)="setSelectedContact($event)"
     ></app-contacts-list>
   </div>
   <div class="selected-contact">
-    <app-selected-contact #selectedContactComponent></app-selected-contact>
+    <app-selected-contact
+      #selectedContactComponent
+      [hidden]="!isSelectedContactVisible || isLoading"
+      (openModal)="openContactFormModal(formModal, $event)"
+      (deleteContact)="getHeroes()"
+    ></app-selected-contact>
   </div>
 </div>
+
+<ng-template #formModal>
+  <app-contact-form-modal
+    #formModalComponent
+    [contactToEdit]="contactToEdit"
+    (submittedForm)="getHeroes()"
+  ></app-contact-form-modal>
+</ng-template>

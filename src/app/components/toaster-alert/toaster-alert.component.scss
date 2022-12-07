@@ -1,0 +1,21 @@
+.toaster-alert {
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+
+  fa-icon.ng-fa-icon {
+    margin-right: 10px;
+  }
+
+  .close-icon {
+    cursor: pointer;
+  }
+}
+
+.success {
+  background: rgb(9, 163, 9);
+}
+.error {
+  background: rgb(206, 11, 11);
+}

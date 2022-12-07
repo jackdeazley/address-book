@@ -9,17 +9,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchContactsModule } from './components/search-contacts/search-contacts.module';
 import { ContactsListModule } from './components/contacts-list/contacts-list.module';
 import { SelectedContactModule } from './components/selected-contact/selected-contact.module';
+import { ContactFormModalModule } from './components/contact-form-modal/contact-form-modal.module';
+import { ToasterAlertModule } from './components/toaster-alert/toaster-alert.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    InMemoryWebApiModule.forRoot(DataService),
+    InMemoryWebApiModule.forRoot(DataService, { put204: false }),
     HttpClientModule,
     BrowserAnimationsModule,
     CollapseModule,
@@ -27,6 +30,9 @@ import { SelectedContactModule } from './components/selected-contact/selected-co
     SearchContactsModule,
     ContactsListModule,
     SelectedContactModule,
+    ContactFormModalModule,
+    ModalModule.forRoot(),
+    ToasterAlertModule,
   ],
   providers: [ContactService],
   bootstrap: [AppComponent],

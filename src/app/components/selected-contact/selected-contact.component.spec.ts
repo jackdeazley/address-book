@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { Contact } from 'src/app/models/contact.model';
 
 import { SelectedContactComponent } from './selected-contact.component';
@@ -10,6 +12,7 @@ describe('SelectedContactComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SelectedContactComponent],
+      imports: [HttpClientTestingModule, FormsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SelectedContactComponent);
