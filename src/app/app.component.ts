@@ -69,6 +69,7 @@ export class AppComponent implements OnInit {
           contact.lastName.toLowerCase().includes(heroName.toLowerCase())
       );
       this.contactList.contacts = [...filteredArray];
+      this.isLoading = false;
     } else {
       this.contactService
         .getContacts()
