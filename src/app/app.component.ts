@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { faAdd, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { delay } from 'rxjs';
+import { ContactFormModalComponent } from './components/contact-form-modal/contact-form-modal.component';
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import { SelectedContactComponent } from './components/selected-contact/selected-contact.component';
 import { Contact } from './models/contact.model';
+import { ContactFormModalService } from './services/contact-form-modal.service';
 import { ContactService } from './services/contacts.service';
 
 @Component({
@@ -15,13 +18,20 @@ export class AppComponent implements OnInit {
   @ViewChild('contactList') contactList: ContactsListComponent;
   @ViewChild('selectedContactComponent')
   selectedContactComponent: SelectedContactComponent;
+  @ViewChild('formModalComponent')
+  formModalComponent: ContactFormModalComponent;
 
   public contacts: Contact[] = [];
+  public contactToEdit?: Contact;
 
   public isCollapsed = true;
   public searchIcon = faSearch;
+  public addIcon = faAdd;
 
-  constructor(public contactService: ContactService) {}
+  constructor(
+    public contactService: ContactService,
+    private modalService: ContactFormModalService
+  ) {}
 
   ngOnInit(): void {
     this.getHeroes();
@@ -51,6 +61,19 @@ export class AppComponent implements OnInit {
     }
 
     this.selectedContactComponent.selectedContact = contact;
+  }
+
+  public openContactFormModal(
+    modalTemplate: TemplateRef<ContactFormModalComponent>,
+    contactToEdit?: Contact
+  ): void {
+    if (contactToEdit) {
+      this.contactToEdit = contactToEdit;
+    } else {
+      this.contactToEdit = undefined;
+    }
+
+    this.modalService.showModal(modalTemplate);
   }
 }
 

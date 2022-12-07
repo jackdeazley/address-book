@@ -9,11 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchContactsModule } from './components/search-contacts/search-contacts.module';
 import { ContactsListModule } from './components/contacts-list/contacts-list.module';
 import { SelectedContactModule } from './components/selected-contact/selected-contact.module';
+import { ContactFormModalModule } from './components/contact-form-modal/contact-form-modal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +29,8 @@ import { SelectedContactModule } from './components/selected-contact/selected-co
     SearchContactsModule,
     ContactsListModule,
     SelectedContactModule,
+    ContactFormModalModule,
+    ModalModule.forRoot(),
   ],
   providers: [ContactService],
   bootstrap: [AppComponent],

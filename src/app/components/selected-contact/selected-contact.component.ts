@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Contact } from 'src/app/models/contact.model';
 
@@ -8,6 +8,7 @@ import { Contact } from 'src/app/models/contact.model';
   styleUrls: ['./selected-contact.component.scss'],
 })
 export class SelectedContactComponent {
+  @Output() openModal: EventEmitter<Contact> = new EventEmitter<Contact>();
   public selectedContact: Contact;
 
   public contactInitials: string;
@@ -21,5 +22,7 @@ export class SelectedContactComponent {
     this.contactInitials = `${firstInitial}${secondInitial}`;
   }
 
-  public onOpenContactModal(): void {}
+  public onOpenContactModal(selectedContact: Contact): void {
+    this.openModal.emit(selectedContact);
+  }
 }

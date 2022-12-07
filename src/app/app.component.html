@@ -3,13 +3,23 @@
     >Avengers Assembled <span>(into an address book) </span></h1
   >
 
-  <fa-icon
-    [icon]="searchIcon"
-    class="header-icon"
-    (click)="isCollapsed = !isCollapsed"
-    [attr.aria-expanded]="!isCollapsed"
-    aria-controls="collapseBasic"
-  ></fa-icon>
+  <div class="header-actions">
+    <fa-icon
+      [icon]="addIcon"
+      class="header-icon"
+      (click)="openContactFormModal(formModal)"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseBasic"
+    ></fa-icon>
+
+    <fa-icon
+      [icon]="searchIcon"
+      class="header-icon"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseBasic"
+    ></fa-icon>
+  </div>
 </header>
 
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
@@ -25,6 +35,16 @@
     ></app-contacts-list>
   </div>
   <div class="selected-contact">
-    <app-selected-contact #selectedContactComponent></app-selected-contact>
+    <app-selected-contact
+      #selectedContactComponent
+      (openModal)="openContactFormModal(formModal, $event)"
+    ></app-selected-contact>
   </div>
 </div>
+
+<ng-template #formModal>
+  <app-contact-form-modal
+    #formModalComponent
+    [contactToEdit]="contactToEdit"
+  ></app-contact-form-modal>
+</ng-template>
