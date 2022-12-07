@@ -1,9 +1,11 @@
+@import '../assets/variables';
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
-  background: darkred;
+  height: 80px;
+  background: $primary-color;
   color: white;
 
   h1 {
@@ -16,6 +18,10 @@ header {
       font-size: 1.5rem;
     }
   }
+
+  .header-icon {
+    cursor: pointer;
+  }
 }
 
 .content-container {
@@ -23,6 +29,10 @@ header {
   margin: 0 auto;
   padding: 30px;
   width: 80%;
+
+  @media screen and (max-width: 920px) {
+    flex-direction: column;
+  }
 
   .contacts-list {
     flex: 4;

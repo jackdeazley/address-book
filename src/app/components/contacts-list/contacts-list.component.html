@@ -13,7 +13,11 @@
     </div>
     <div class="contact-list-content">
       <div class="contact-list">
-        <div class="contact-details" *ngFor="let contact of contacts">
+        <div
+          class="contact-details"
+          *ngFor="let contact of contacts"
+          (click)="onSelectedContact(contact)"
+        >
           <div class="contact-name">
             <span>{{ contact.firstName }} {{ contact.lastName }}</span>
           </div>

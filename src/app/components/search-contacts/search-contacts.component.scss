@@ -1,3 +1,4 @@
+@import '../../../assets/variables';
 .search-bar {
   display: flex;
   padding: 0 30px;
@@ -7,10 +8,10 @@
     width: 80%;
     border: none;
     height: 50px;
-    border-bottom: 1px solid darkred;
+    border-bottom: 1px solid $primary-color;
 
     &::placeholder {
-      color: darkred;
+      color: $primary-color;
     }
 
     &:focus {
