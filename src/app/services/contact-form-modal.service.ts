@@ -27,8 +27,11 @@ export class ContactFormModalService {
       id: new FormControl(''),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      phoneNumber: new FormControl(null),
-      email: new FormControl('', Validators.email),
+      phoneNumber: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('^[0-9]*$'),
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
 }

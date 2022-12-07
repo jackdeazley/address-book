@@ -33,7 +33,6 @@ export class SelectedContactComponent {
 
   public onDeleteContact(contact: Contact): void {
     this.contactService.deleteContact(contact.id).subscribe(() => {
-      console.log('contact deleted!');
       this.deleteContact.emit();
     });
   }

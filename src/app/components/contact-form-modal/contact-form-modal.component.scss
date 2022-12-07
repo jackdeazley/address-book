@@ -25,6 +25,16 @@
       border: none;
       padding: 10px;
       color: $primary-color;
+      outline: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .has-error {
+      border: 1px solid red;
+      color: red;
     }
 
     .button-container {

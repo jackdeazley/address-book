@@ -14,6 +14,7 @@ export class ContactFormModalComponent implements OnInit {
   @Output() submittedForm: EventEmitter<any> = new EventEmitter<any>();
 
   public contactForm: FormGroup;
+  public hasSubmitted: boolean = false;
 
   constructor(
     public contactFormModalService: ContactFormModalService,
@@ -35,6 +36,7 @@ export class ContactFormModalComponent implements OnInit {
   }
 
   public onSubmitForm(): void {
+    this.hasSubmitted = true;
     if (this.contactForm.valid) {
       if (this.contactToEdit) {
         this.contactService
