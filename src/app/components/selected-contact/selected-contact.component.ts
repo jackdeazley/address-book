@@ -2,6 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contacts.service';
+import {
+  ToasterAlertModel,
+  ToasterAlertService,
+  ToasterAlertType,
+} from 'src/app/services/toaster-alert.service';
 
 @Component({
   selector: 'app-selected-contact',
@@ -18,7 +23,10 @@ export class SelectedContactComponent {
   public phoneIcon = faPhone;
   public emailIcon = faEnvelope;
 
-  constructor(public contactService: ContactService) {}
+  constructor(
+    public contactService: ContactService,
+    public toasterService: ToasterAlertService
+  ) {}
 
   public createContactIcon(contact: Contact): void {
     const firstInitial = contact.firstName.charAt(0).toUpperCase();
@@ -34,6 +42,12 @@ export class SelectedContactComponent {
   public onDeleteContact(contact: Contact): void {
     this.contactService.deleteContact(contact.id).subscribe(() => {
       this.deleteContact.emit();
+      const toasterAlertModel: ToasterAlertModel = {
+        showToaster: true,
+        toasterType: ToasterAlertType.DELETE,
+        message: 'Contact Deleted',
+      };
+      this.toasterService.toasterAlert$.next(toasterAlertModel);
     });
   }
 }

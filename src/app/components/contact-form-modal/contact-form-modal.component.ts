@@ -1,8 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { catchError, of, throwError } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactFormModalService } from 'src/app/services/contact-form-modal.service';
 import { ContactService } from 'src/app/services/contacts.service';
+import {
+  ToasterAlertModel,
+  ToasterAlertService,
+  ToasterAlertType,
+} from 'src/app/services/toaster-alert.service';
 
 @Component({
   selector: 'app-contact-form-modal',
@@ -18,7 +24,8 @@ export class ContactFormModalComponent implements OnInit {
 
   constructor(
     public contactFormModalService: ContactFormModalService,
-    public contactService: ContactService
+    public contactService: ContactService,
+    public toasterService: ToasterAlertService
   ) {}
 
   public ngOnInit(): void {
@@ -51,9 +58,20 @@ export class ContactFormModalComponent implements OnInit {
         });
         this.contactService
           .createContact(this.contactForm.value)
-          .subscribe((newContact) => {
+          .pipe(
+            catchError((err) => {
+              return throwError(() => new Error(err));
+            })
+          )
+          .subscribe(() => {
             this.submittedForm.emit();
             this.hideModal();
+            const toasterAlertModal: ToasterAlertModel = {
+              showToaster: true,
+              toasterType: ToasterAlertType.SUCCESS,
+              message: `Contact added!`,
+            };
+            this.toasterService.toasterAlert$.next(toasterAlertModal);
           });
       }
     }

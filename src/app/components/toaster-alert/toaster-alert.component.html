@@ -1,0 +1,24 @@
+<div
+  class="toaster-alert"
+  [class.success]="toasterAlertModel.toasterType === 'success'"
+  [class.error]="toasterAlertModel.toasterType === 'delete'"
+>
+  <div class="message">
+    <fa-icon
+      [icon]="faSuccess"
+      *ngIf="toasterAlertModel.toasterType === 'success'"
+    ></fa-icon>
+
+    <fa-icon
+      [icon]="faDelete"
+      *ngIf="toasterAlertModel.toasterType === 'delete'"
+    ></fa-icon>
+
+    <span>{{ toasterAlertModel.message }}</span>
+  </div>
+  <fa-icon
+    [icon]="faClose"
+    class="close-icon"
+    (click)="closeToasterAlert()"
+  ></fa-icon>
+</div>

@@ -21,7 +21,10 @@
     ></fa-icon>
   </div>
 </header>
-
+<app-toaster-alert
+  *ngIf="showToasterAlert"
+  [toasterAlertModel]="toasterAlertModel"
+></app-toaster-alert>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
   <app-search-contacts (searchedHero)="getHeroes($event)"></app-search-contacts>
 </div>

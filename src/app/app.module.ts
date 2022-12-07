@@ -16,6 +16,7 @@ import { SearchContactsModule } from './components/search-contacts/search-contac
 import { ContactsListModule } from './components/contacts-list/contacts-list.module';
 import { SelectedContactModule } from './components/selected-contact/selected-contact.module';
 import { ContactFormModalModule } from './components/contact-form-modal/contact-form-modal.module';
+import { ToasterAlertModule } from './components/toaster-alert/toaster-alert.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { ContactFormModalModule } from './components/contact-form-modal/contact-
     SelectedContactModule,
     ContactFormModalModule,
     ModalModule.forRoot(),
+    ToasterAlertModule,
   ],
   providers: [ContactService],
   bootstrap: [AppComponent],
