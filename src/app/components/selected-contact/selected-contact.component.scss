@@ -9,6 +9,11 @@
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 920px) {
+    margin-left: 0;
+    margin-top: 30px;
+  }
+
   h2 {
     color: darkred;
     font-size: 2rem;
@@ -44,6 +49,12 @@
     .info-icon {
       color: darkred;
       margin-right: 5px;
+    }
+  }
+
+  .button-container {
+    button {
+      margin-top: 15px;
     }
   }
 }

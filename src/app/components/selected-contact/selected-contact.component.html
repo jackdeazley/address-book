@@ -22,4 +22,15 @@
       selectedContact.phoneNumber ? selectedContact.phoneNumber : 'N/A'
     }}</span>
   </div>
+  <div class="secondary-info">
+    <fa-icon class="info-icon" [icon]="emailIcon"></fa-icon>
+
+    <span class="contact-email">{{
+      selectedContact.email ? selectedContact.email : 'N/A'
+    }}</span>
+  </div>
+
+  <div class="button-container">
+    <button (click)="onOpenContactModal()">Update Contact</button>
+  </div>
 </div>

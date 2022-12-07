@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { delay } from 'rxjs';
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import { SelectedContactComponent } from './components/selected-contact/selected-contact.component';
 import { Contact } from './models/contact.model';
@@ -35,9 +36,12 @@ export class AppComponent implements OnInit {
       );
       this.contactList.contacts = [...filteredArray];
     } else {
-      this.contactService.getContacts().subscribe((contacts) => {
-        this.contacts = contacts;
-      });
+      this.contactService
+        .getContacts()
+        .pipe(delay(500))
+        .subscribe((contacts) => {
+          this.contacts = contacts;
+        });
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Contact } from 'src/app/models/contact.model';
 
 @Component({
@@ -12,6 +12,7 @@ export class SelectedContactComponent {
 
   public contactInitials: string;
   public phoneIcon = faPhone;
+  public emailIcon = faEnvelope;
 
   public createContactIcon(contact: Contact): void {
     const firstInitial = contact.firstName.charAt(0);
@@ -19,4 +20,6 @@ export class SelectedContactComponent {
 
     this.contactInitials = `${firstInitial}${secondInitial}`;
   }
+
+  public onOpenContactModal(): void {}
 }
