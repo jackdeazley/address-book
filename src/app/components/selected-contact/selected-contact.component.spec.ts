@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Contact } from 'src/app/models/contact.model';
+import { Contact } from '../../models/contact.model';
 
 import { SelectedContactComponent } from './selected-contact.component';
 

@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { Contact } from 'src/app/models/contact.model';
-import { ContactService } from 'src/app/services/contacts.service';
+import { Contact } from '../../models/contact.model';
+import { ContactService } from '../../services/contacts.service';
 import {
   ToasterAlertModel,
   ToasterAlertService,
   ToasterAlertType,
-} from 'src/app/services/toaster-alert.service';
+} from '../../services/toaster-alert.service';
 
 @Component({
   selector: 'app-selected-contact',

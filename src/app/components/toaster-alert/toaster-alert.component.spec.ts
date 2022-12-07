@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ToasterAlertType } from 'src/app/services/toaster-alert.service';
+import { ToasterAlertType } from '../../services/toaster-alert.service';
 
 import { ToasterAlertComponent } from './toaster-alert.component';
 

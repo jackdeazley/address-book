@@ -8,13 +8,12 @@ import {
 } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { of } from 'rxjs';
-import { ContactFormModalService } from 'src/app/services/contact-form-modal.service';
-import { ContactService } from 'src/app/services/contacts.service';
-import { MOCK_DATA } from 'src/app/services/data-service.service';
+import { ContactFormModalService } from '../../services/contact-form-modal.service';
+import { ContactService } from '../../services/contacts.service';
 import {
   ToasterAlertModel,
   ToasterAlertType,
-} from 'src/app/services/toaster-alert.service';
+} from '../../services/toaster-alert.service';
 
 import { ContactFormModalComponent } from './contact-form-modal.component';
 
