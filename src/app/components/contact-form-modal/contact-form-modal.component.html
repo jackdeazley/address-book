@@ -1,6 +1,8 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+    <h2 class="modal-title pull-left">{{
+      contactToEdit ? 'Update Contact' : 'Add Contact'
+    }}</h2>
     <button
       type="button"
       class="btn-close close pull-right"
@@ -13,26 +15,28 @@
   <div class="modal-body">
     <form class="contact-form" [formGroup]="contactForm">
       <div class="form-control">
-        <label for="firstName">First Name</label>
+        <label for="firstName">First Name:</label>
         <input type="text" formControlName="firstName" />
       </div>
 
       <div class="form-control">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">Last Name:</label>
         <input type="text" formControlName="lastName" />
       </div>
 
       <div class="form-control">
-        <label for="phoneNumber">phone</label>
+        <label for="phoneNumber">Phone Number:</label>
         <input type="text" formControlName="phoneNumber" />
       </div>
 
       <div class="form-control">
-        <label for="email">email</label>
+        <label for="email">Email Address: </label>
         <input type="text" formControlName="email" />
       </div>
 
-      <button type="submit" (click)="onSubmitForm()">Submit</button>
+      <div class="button-container">
+        <button type="submit" (click)="onSubmitForm()">Submit</button>
+      </div>
     </form>
   </div>
 </div>

@@ -35,23 +35,25 @@ export class ContactFormModalComponent implements OnInit {
   }
 
   public onSubmitForm(): void {
-    if (this.contactToEdit) {
-      this.contactService
-        .updateContact(this.contactForm.value)
-        .subscribe(() => {
-          this.submittedForm.emit();
-          this.contactFormModalService.hideModal();
+    if (this.contactForm.valid) {
+      if (this.contactToEdit) {
+        this.contactService
+          .updateContact(this.contactForm.value)
+          .subscribe(() => {
+            this.submittedForm.emit();
+            this.hideModal();
+          });
+      } else {
+        this.contactForm.patchValue({
+          id: Math.random().toString(16).slice(2),
         });
-    } else {
-      this.contactForm.patchValue({
-        id: Math.random().toFixed().toString(),
-      });
-      this.contactService
-        .createContact(this.contactForm.value)
-        .subscribe((newContact) => {
-          this.submittedForm.emit();
-          this.contactFormModalService.hideModal();
-        });
+        this.contactService
+          .createContact(this.contactForm.value)
+          .subscribe((newContact) => {
+            this.submittedForm.emit();
+            this.hideModal();
+          });
+      }
     }
   }
 

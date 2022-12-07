@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
         .pipe(delay(500))
         .subscribe((contacts) => {
           this.contacts = contacts;
+          localStorage.setItem('contacts', JSON.stringify(contacts));
           this.isSelectedContactVisible = false;
         });
     }
