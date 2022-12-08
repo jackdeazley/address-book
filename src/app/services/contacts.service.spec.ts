@@ -77,6 +77,48 @@ describe('ContactsService', () => {
     expect(request.request.method).toBe('PUT');
   });
 
+  it('CS004 - be able to update a specific contact from the API bia PUT', () => {
+    const avenger: Contact = {
+      id: '1',
+      firstName: 'Peter',
+      lastName: 'Parker',
+    };
+    service.updateContact(avenger).subscribe((contact) => {
+      expect(contact).toEqual(avenger);
+    });
+
+    const request = httpMock.expectOne(`${API_URL}/contacts/${avenger.id}`);
+    expect(request.request.method).toBe('PUT');
+  });
+
+  it('CS005 - be able to create a new contact from the API bia POST', () => {
+    const avenger: Contact = {
+      id: '1',
+      firstName: 'Peter',
+      lastName: 'Parker',
+    };
+    service.createContact(avenger).subscribe((contact) => {
+      expect(contact).toEqual(avenger);
+    });
+
+    const request = httpMock.expectOne(`${API_URL}/contacts`);
+    expect(request.request.method).toBe('POST');
+  });
+
+  it('CS006 - be able to delete a specific contact from the API bia DELETE', () => {
+    const avenger: Contact = {
+      id: '1',
+      firstName: 'Peter',
+      lastName: 'Parker',
+    };
+    service.deleteContact(avenger.id).subscribe((contact) => {
+      expect(contact).toEqual(avenger);
+    });
+
+    const request = httpMock.expectOne(`${API_URL}/contacts/${avenger.id}`);
+    expect(request.request.method).toBe('DELETE');
+  });
+
   afterEach(() => {
     httpMock.verify();
   });

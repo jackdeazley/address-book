@@ -17,6 +17,7 @@ import { ContactFormModalModule } from './components/contact-form-modal/contact-
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import { ContactsListModule } from './components/contacts-list/contacts-list.module';
 import { SearchContactsModule } from './components/search-contacts/search-contacts.module';
+import { SelectedContactComponent } from './components/selected-contact/selected-contact.component';
 import { SelectedContactModule } from './components/selected-contact/selected-contact.module';
 import { Contact } from './models/contact.model';
 import { ContactService } from './services/contacts.service';
@@ -181,5 +182,32 @@ describe('AppComponent', () => {
       expect(spyOnShowModal).toHaveBeenCalled();
       expect(component.contactToEdit).toEqual(contactToEdit);
     });
+  });
+
+  it('AC007 - setSelectedContact will set the selected contact', () => {
+    // arrange
+    const contact: Contact = {
+      id: '1',
+      firstName: 'Jack',
+      lastName: 'Deazley',
+    };
+
+    component.selectedContactComponent = {
+      createContactIcon(contact) {},
+      selectedContact: { id: '', firstName: '', lastName: '' },
+    } as SelectedContactComponent;
+
+    const spyOnCreateIcon = spyOn(
+      component.selectedContactComponent,
+      `createContactIcon`
+    );
+
+    // act
+    component.setSelectedContact(contact);
+
+    // assert
+    expect(spyOnCreateIcon).toHaveBeenCalledOnceWith(contact);
+    expect(component.selectedContactComponent.selectedContact).toEqual(contact);
+    expect(component.isSelectedContactVisible).toBeTrue();
   });
 });
