@@ -1,3 +1,6 @@
+# If I were to consider future requirements for large properties...
+I would start by adding an input field on the form modal I created, for file types such as images. Once i obtain the file object in the code, i would then create a new api connected to something like firebase and connect it by adding the url to the post request. There, it would be stored and be able to be retrieved back to the webapp for use on the UI.
+
 # FoundryAddressBook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
